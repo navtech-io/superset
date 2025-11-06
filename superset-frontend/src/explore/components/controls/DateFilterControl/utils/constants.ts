@@ -23,6 +23,7 @@ import {
   PreviousCalendarMonth,
   PreviousCalendarQuarter,
   PreviousCalendarYear,
+  PreviousFinancialYear,
   CommonRangeType,
   CalendarRangeType,
   CurrentRangeType,
@@ -31,6 +32,7 @@ import {
   CurrentYear,
   CurrentQuarter,
   CurrentDay,
+  CurrentFinancialYear,
 } from 'src/explore/components/controls/DateFilterControl/types';
 import { CheckboxOptionType } from '@superset-ui/core/components/Radio';
 import { extendedDayjs } from '@superset-ui/core/utils/dates';
@@ -60,6 +62,7 @@ export const CALENDAR_RANGE_OPTIONS: CheckboxOptionType[] = [
   { value: PreviousCalendarMonth, label: t('previous calendar month') },
   { value: PreviousCalendarQuarter, label: t('previous calendar quarter') },
   { value: PreviousCalendarYear, label: t('previous calendar year') },
+  { value: PreviousFinancialYear, label: t('previous financial year') },
 ];
 export const CALENDAR_RANGE_VALUES_SET = new Set(
   CALENDAR_RANGE_OPTIONS.map(value => value.value),
@@ -71,6 +74,7 @@ export const CURRENT_RANGE_OPTIONS: CheckboxOptionType[] = [
   { value: CurrentMonth, label: t('Current month') },
   { value: CurrentQuarter, label: t('Current quarter') },
   { value: CurrentYear, label: t('Current year') },
+  { value: CurrentFinancialYear, label: t('Current financial year') },
 ];
 export const CURRENT_RANGE_VALUES_SET = new Set(
   CURRENT_RANGE_OPTIONS.map(value => value.value),
@@ -124,6 +128,7 @@ export const CALENDAR_RANGE_SET: Set<CalendarRangeType> = new Set([
   PreviousCalendarMonth,
   PreviousCalendarQuarter,
   PreviousCalendarYear,
+  PreviousFinancialYear,
 ]);
 
 export const CURRENT_CALENDAR_RANGE_SET: Set<CurrentRangeType> = new Set([
@@ -132,6 +137,7 @@ export const CURRENT_CALENDAR_RANGE_SET: Set<CurrentRangeType> = new Set([
   CurrentMonth,
   CurrentQuarter,
   CurrentYear,
+  CurrentFinancialYear,
 ]);
 
 export const DAYJS_FORMAT = 'YYYY-MM-DD[T]HH:mm:ss';
