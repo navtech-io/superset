@@ -33,7 +33,7 @@ const Calendar = ({ className, ...otherProps }) => {
             line-height: 1;
             padding: ${theme.sizeUnit * 3}px;
             background: ${theme.colorBgElevated};
-            color: ${theme.colorTextLightSolid};
+            color: ${theme.colorText};
             border-radius: 4px;
             pointer-events: none;
             z-index: 1000;
@@ -113,7 +113,7 @@ export default styled(Calendar)`
       line-height: 1;
       padding: ${theme.sizeUnit * 3}px;
       background: ${theme.colorBgElevated};
-      color: ${theme.colorTextLightSolid};
+      color: ${theme.colorText};
       border-radius: ${theme.borderRadius}px;
       pointer-events: none;
       z-index: 1000;
@@ -206,8 +206,8 @@ export default styled(Calendar)`
 
     .ch-tooltip {
       padding: ${theme.sizeUnit * 2}px;
-      background: ${theme.colorText};
-      color: ${theme.colorTextLightSolid};
+      background: ${theme.colorBgElevated};
+      color: ${theme.colorText};
       font-size: ${theme.fontSizeSM}px;
       line-height: 1.4;
       width: 140px;
