@@ -344,6 +344,40 @@ def test_previous_calendar_quarter():
         assert result == expected
 
 
+def test_previous_financial_year():
+    with freezegun.freeze_time("2023-05-15"):
+        result = get_since_until("previous financial year")
+        expected = (datetime(2022, 4, 1), datetime(2023, 3, 31, 23, 59, 59))
+        assert result == expected
+
+    with freezegun.freeze_time("2023-03-15"):
+        result = get_since_until("previous financial year")
+        expected = (datetime(2021, 4, 1), datetime(2022, 3, 31, 23, 59, 59))
+        assert result == expected
+
+    with freezegun.freeze_time("2024-04-01"):
+        result = get_since_until("previous financial year")
+        expected = (datetime(2023, 4, 1), datetime(2024, 3, 31, 23, 59, 59))
+        assert result == expected
+
+
+def test_current_financial_year():
+    with freezegun.freeze_time("2023-05-15"):
+        result = get_since_until("Current financial year")
+        expected = (datetime(2023, 4, 1), datetime(2024, 3, 31, 23, 59, 59))
+        assert result == expected
+
+    with freezegun.freeze_time("2023-03-15"):
+        result = get_since_until("Current financial year")
+        expected = (datetime(2022, 4, 1), datetime(2023, 3, 31, 23, 59, 59))
+        assert result == expected
+
+    with freezegun.freeze_time("2024-04-01"):
+        result = get_since_until("Current financial year")
+        expected = (datetime(2024, 4, 1), datetime(2025, 3, 31, 23, 59, 59))
+        assert result == expected
+
+
 @patch("superset.utils.date_parser.parse_human_datetime", mock_parse_human_datetime)
 def test_datetime_eval() -> None:
     result = datetime_eval("datetime('now')")

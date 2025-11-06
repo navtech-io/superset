@@ -82,23 +82,27 @@ export const PreviousCalendarWeek = 'previous calendar week';
 export const PreviousCalendarMonth = 'previous calendar month';
 export const PreviousCalendarQuarter = 'previous calendar quarter';
 export const PreviousCalendarYear = 'previous calendar year';
+export const PreviousFinancialYear = 'previous financial year';
 export type CalendarRangeType =
   | typeof PreviousCalendarWeek
   | typeof PreviousCalendarMonth
   | typeof PreviousCalendarQuarter
-  | typeof PreviousCalendarYear;
+  | typeof PreviousCalendarYear
+  | typeof PreviousFinancialYear;
 
 export const CurrentDay = 'Current day';
 export const CurrentWeek = 'Current week';
 export const CurrentMonth = 'Current month';
 export const CurrentYear = 'Current year';
 export const CurrentQuarter = 'Current quarter';
+export const CurrentFinancialYear = 'Current financial year';
 export type CurrentRangeType =
   | typeof CurrentDay
   | typeof CurrentWeek
   | typeof CurrentMonth
   | typeof CurrentQuarter
-  | typeof CurrentYear;
+  | typeof CurrentYear
+  | typeof CurrentFinancialYear;
 
 export type FrameComponentProps = {
   onChange: (timeRange: string) => void;

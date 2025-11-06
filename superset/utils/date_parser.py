@@ -414,6 +414,32 @@ def get_since_until(  # pylint: disable=too-many-arguments,too-many-locals,too-m
         and separator not in time_range
     ):
         time_range = "DATETRUNC(DATEADD(DATETIME('today'), 0, YEAR), YEAR) : DATETRUNC(DATEADD(DATETIME('today'), 1, YEAR), YEAR)"  # noqa: E501
+    if (
+        time_range
+        and time_range.startswith("previous financial year")
+        and separator not in time_range
+    ):
+        now = datetime.now()
+        if now.month >= 4:
+            fy_start = datetime(now.year - 1, 4, 1)
+            fy_end = datetime(now.year, 3, 31, 23, 59, 59)
+        else:
+            fy_start = datetime(now.year - 2, 4, 1)
+            fy_end = datetime(now.year - 1, 3, 31, 23, 59, 59)
+        time_range = f"{fy_start.strftime('%Y-%m-%dT00:00:00')} : {fy_end.strftime('%Y-%m-%dT23:59:59')}"  # noqa: E501
+    if (
+        time_range
+        and time_range.startswith("Current financial year")
+        and separator not in time_range
+    ):
+        now = datetime.now()
+        if now.month >= 4:
+            fy_start = datetime(now.year, 4, 1)
+            fy_end = datetime(now.year + 1, 3, 31, 23, 59, 59)
+        else:
+            fy_start = datetime(now.year - 1, 4, 1)
+            fy_end = datetime(now.year, 3, 31, 23, 59, 59)
+        time_range = f"{fy_start.strftime('%Y-%m-%dT00:00:00')} : {fy_end.strftime('%Y-%m-%dT23:59:59')}"  # noqa: E501
 
     if time_range and separator in time_range:
         time_range_lookup = [
