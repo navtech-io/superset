@@ -149,6 +149,7 @@ class MySQLEngineSpec(BasicParametersMixin, BaseEngineSpec):
         TimeGrain.WEEK_STARTING_MONDAY: "DATE(DATE_SUB({col}, "
         "INTERVAL DAYOFWEEK(DATE_SUB({col}, "
         "INTERVAL 1 DAY)) - 1 DAY))",
+        TimeGrain.FINANCIAL_YEAR: "CASE WHEN MONTH({col}) >= 4 THEN DATE(CONCAT(YEAR({col}), '-04-01')) ELSE DATE(CONCAT(YEAR({col}) - 1, '-04-01')) END",  # noqa: E501
     }
 
     type_code_map: dict[int, str] = {}  # loaded from get_datatype only if needed
