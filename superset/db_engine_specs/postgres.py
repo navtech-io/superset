@@ -117,6 +117,7 @@ class PostgresBaseEngineSpec(BaseEngineSpec):
         TimeGrain.MONTH: "DATE_TRUNC('month', {col})",
         TimeGrain.QUARTER: "DATE_TRUNC('quarter', {col})",
         TimeGrain.YEAR: "DATE_TRUNC('year', {col})",
+        TimeGrain.FINANCIAL_YEAR: "CASE WHEN EXTRACT(MONTH FROM {col}) >= 4 THEN DATE_TRUNC('year', {col}) + INTERVAL '3 months' ELSE DATE_TRUNC('year', {col}) - INTERVAL '9 months' END",  # noqa: E501
     }
 
     custom_errors: dict[Pattern[str], tuple[str, SupersetErrorType, dict[str, Any]]] = {

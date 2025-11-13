@@ -226,6 +226,7 @@ class TimeGrain(StrEnum):
     QUARTER = "P3M"
     QUARTER_YEAR = "P0.25Y"
     YEAR = "P1Y"
+    FINANCIAL_YEAR = "P1FY"
 
 
 class PandasAxis(int, Enum):
