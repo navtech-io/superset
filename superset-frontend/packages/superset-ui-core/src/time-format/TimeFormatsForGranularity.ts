@@ -44,6 +44,7 @@ const TimeFormatsForGranularity: Record<TimeGranularity, string> = {
   [TimeGranularity.WEEK_STARTING_MONDAY]: DATABASE_DATE,
   [TimeGranularity.WEEK_ENDING_SATURDAY]: DATABASE_DATE,
   [TimeGranularity.WEEK_ENDING_SUNDAY]: DATABASE_DATE,
+  [TimeGranularity.FINANCIAL_YEAR]: 'FY %Y',
 };
 
 export default TimeFormatsForGranularity;
